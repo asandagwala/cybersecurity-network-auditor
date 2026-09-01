@@ -30,3 +30,24 @@ def check_firewall(configuration):
         "severity": "HIGH",
         "message": "Firewall is disabled."
     }
+    
+    
+def check_authentication(configuration):
+    if not configuration["default_credentials"]:
+        return None
+    
+    return {
+        "check":"Authentication",
+        "severity": "CRITICAL",
+        "message" : "Default credentials are still in use."
+    }
+
+def check_remote_admin_enabled(configuration):
+    if not configuration["remote_admin_enabled"]:
+        return None
+    
+    return {
+        "check" : "Remote Admin",
+        "severity" : "High",
+        "message" : "Remote Admin is enabled"
+    }
