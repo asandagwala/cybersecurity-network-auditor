@@ -1,6 +1,6 @@
 import json
 
-from checks import (run_security_checks, check_firewall, check_authentication, check_remote_admin_enabled, check_network_encryption)
+from checks import (run_security_checks, check_firewall, check_authentication, check_remote_admin_enabled, check_network_encryption, check_unnecessary_services)
 
 def load_configuration():
     with open("data/config.json", "r") as file:
@@ -12,7 +12,7 @@ def main():
     configuration = load_configuration() 
     
     findings = run_security_checks(configuration, [check_firewall,check_authentication, 
-    check_remote_admin_enabled, check_network_encryption])
+    check_remote_admin_enabled, check_network_encryption, check_unnecessary_services])
     
     print("Security checks completed.")
     print(f"Findings:{len(findings)}")

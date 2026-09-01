@@ -3,7 +3,7 @@
   "firewall_enabled": true,
   "default_credentials": true,
   "remote_admin_enabled": true,
-  "encryption": "WPA",
+  "encryption": "WPA2",
   "firmware_status": "outdated",
   "services": ["ssh", "http", "ftp"]
 }

@@ -48,7 +48,7 @@ def check_remote_admin_enabled(configuration):
     
     return {
         "check" : "Remote Admin",
-        "severity" : "High",
+        "severity" : "HIGH",
         "message" : "Remote Admin is enabled"
     }
     
@@ -60,4 +60,23 @@ def check_network_encryption(configuration):
         "check": "Network Encryption",
         "severity": "HIGH",
         "message": "Network Encryption is insecure"
+    }
+    
+def check_unnecessary_services(configuration):
+    if "ftp" in configuration["services"]:
+        return {
+        "check": "Services",
+        "severity": "HIGH",
+        "message":"FTP service is enabled and should be disabled if not required."
+    }
+    return None
+    
+def check_firmware_status(configuration):
+    if configuration["firmware_status"] != "outdated":
+        return None
+    
+    return {
+        "check": "Firmware Status",
+        "severity" : "MEDIUM",
+        "message": "Outdated firmware"
     }
