@@ -48,6 +48,19 @@ A configuration is evaluated against a collection of security checks. Each check
 
 The findings are then assessed according to their severity, allowing the tool to provide an overall view of the security posture and prioritise areas that require attention.
 
+### Configuration
+
+The auditor uses a JSON configuration file as its input. The configuration represents the security settings of a network device, such as a router.
+
+The configuration currently includes information about:
+
+- Firewall status
+- Default credentials
+- Remote administration
+- Network encryption
+- Firmware status
+- Enabled services
+
 ## Planned Security Checks
 
 The initial version of the auditor will focus on common configuration and network security concerns, including:
