@@ -1,0 +1,9 @@
+{
+  "device": "router-01",
+  "firewall_enabled": true,
+  "default_credentials": false,
+  "remote_admin_enabled": true,
+  "encryption": "WPA2",
+  "firmware_status": "outdated",
+  "services": ["ssh", "http", "ftp"]
+}

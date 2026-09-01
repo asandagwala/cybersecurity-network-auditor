@@ -1,5 +1,14 @@
+import json
+
+def load_configuration():
+    with open("data/config.json", "r") as file:
+        configuration = json.load(file)
+        
+    return configuration
+
 def main():
-    print("Cybersecurity Network Auditor")
+    configuration = load_configuration() 
+    print(configuration)
 
 
 if __name__ == "__main__":
