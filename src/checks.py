@@ -28,7 +28,7 @@ def check_firewall(configuration):
     return{
         "check": "Firewall",
         "severity": "HIGH",
-        "message": "Firewall is disabled."
+        "message": "Firewall is disabled, removing an important layer of network protection."
     }
     
     
@@ -49,7 +49,7 @@ def check_remote_admin_enabled(configuration):
     return {
         "check" : "Remote Admin",
         "severity" : "HIGH",
-        "message" : "Remote Admin is enabled"
+        "message" : "Remote administration is enabled, increasing the device's attack surface."
     }
     
 def check_network_encryption(configuration):
@@ -59,7 +59,7 @@ def check_network_encryption(configuration):
     return {
         "check": "Network Encryption",
         "severity": "HIGH",
-        "message": "Network Encryption is insecure"
+        "message": "The network is using an insecure encryption protocol."
     }
     
 def check_unnecessary_services(configuration):
@@ -67,7 +67,7 @@ def check_unnecessary_services(configuration):
         return {
         "check": "Services",
         "severity": "HIGH",
-        "message":"FTP service is enabled and should be disabled if not required."
+        "message":"FTP is enabled and does not encrypt credentials or data."
     }
     return None
     
@@ -78,5 +78,5 @@ def check_firmware_status(configuration):
     return {
         "check": "Firmware Status",
         "severity" : "MEDIUM",
-        "message": "Outdated firmware"
+        "message": "Device firmware is outdated and may contain known vulnerabilities."
     }
