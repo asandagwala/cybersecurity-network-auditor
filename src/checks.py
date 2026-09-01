@@ -105,3 +105,40 @@ def calculate_overall_risk(findings):
     else:
         return "LOW"
     
+def prioritise_findings(findings):
+    severity_priority = {
+        "CRITICAL": 1,
+        "HIGH": 2,
+        "MEDIUM": 3,
+        "LOW": 4
+    }
+    
+    return sorted(findings, key=lambda finding: severity_priority[finding["severity"]])
+
+def generate_audit_report(configuration, findings, overall_risk):
+    report = []
+    
+    report.append("=============================================")
+    report.append("       CYBERSECURITY AUDIT REPORT    ")
+    report.append("=============================================") 
+    report.append("")
+    
+    report.append(f"Device: {configuration['device']}")
+    report.append(f"Overall Risk: {overall_risk}")
+    report.append(f"Total Findings: {len(findings)}")
+    report.append("")
+    
+    report.append("------------------------------------------------")
+    report.append("FINDINGS")
+    report.append("-------------------------------------------------")
+    report.append("")
+    
+    for finding in findings:
+        report.append(f"[{finding['severity']}] {finding['check']}")
+        report.append(f"Issue: {finding['message']}")
+        report.append(f"Recommendation: {finding['recommendation']}")
+        report.append("")
+        
+        report.append("================================================") 
+        
+    return "\n".join(report)                          
