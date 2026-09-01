@@ -19,4 +19,14 @@ def run_security_checks(configuration,checks):
             findings.append(finding)
         
     return findings
-# 
+
+
+def check_firewall(configuration):
+    if configuration["firewall_enabled"]:
+        return None
+    
+    return{
+        "check": "Firewall",
+        "severity": "HIGH",
+        "message": "Firewall is disabled."
+    }
