@@ -4,6 +4,6 @@
   "default_credentials": true,
   "remote_admin_enabled": true,
   "encryption": "WPA2",
-  "firmware_status": "outdated",
+  "firmware_status":"up-to-date",
   "services": ["ssh", "http", "ftp"]
 }

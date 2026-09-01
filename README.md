@@ -75,6 +75,15 @@ The initial version of the auditor will focus on common configuration and networ
 
 The checks will evolve as the project develops and as additional cybersecurity concepts are explored.
 
+### Severity Levels
+
+Security findings are classified according to their potential impact:
+
+- **LOW** — Minor weakness with limited security impact.
+- **MEDIUM** — Security weakness that should be addressed.
+- **HIGH** — Significant weakness that could seriously increase security risk.
+- **CRITICAL** — Severe weakness that could lead to major compromise or unauthorised access.
+
 ## Technology
 
 **Language**
