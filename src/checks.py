@@ -1,3 +1,4 @@
+
 """
 The run_security_checks function runs the security checks against a
 network device configuration and collects any security findings.
@@ -28,7 +29,8 @@ def check_firewall(configuration):
     return{
         "check": "Firewall",
         "severity": "HIGH",
-        "message": "Firewall is disabled, removing an important layer of network protection."
+        "message": "Firewall is disabled, removing an important layer of network protection.",
+         "recommendation": "Enable the firewall to provide an important layer of network protection."
     }
     
     
@@ -39,7 +41,8 @@ def check_authentication(configuration):
     return {
         "check":"Authentication",
         "severity": "CRITICAL",
-        "message" : "Default credentials are still in use."
+        "message" : "Default credentials are still in use.",
+         "recommendation": "Change the default credentials to strong, unique credentials."
     }
 
 def check_remote_admin_enabled(configuration):
@@ -49,7 +52,9 @@ def check_remote_admin_enabled(configuration):
     return {
         "check" : "Remote Admin",
         "severity" : "HIGH",
-        "message" : "Remote administration is enabled, increasing the device's attack surface."
+        "message" : "Remote administration is enabled, increasing the device's attack surface.",
+        "recommendation": "Disable remote administration if it is not required."
+       
     }
     
 def check_network_encryption(configuration):
@@ -59,7 +64,9 @@ def check_network_encryption(configuration):
     return {
         "check": "Network Encryption",
         "severity": "HIGH",
-        "message": "The network is using an insecure encryption protocol."
+        "message": "The network is using an insecure encryption protocol.",
+        "recommendation": "Use WPA2 or WPA3 encryption to protect network communications."
+        
     }
     
 def check_unnecessary_services(configuration):
@@ -67,7 +74,8 @@ def check_unnecessary_services(configuration):
         return {
         "check": "Services",
         "severity": "HIGH",
-        "message":"FTP is enabled and does not encrypt credentials or data."
+        "message":"FTP is enabled and does not encrypt credentials or data.",
+        "recommendation": "Disable FTP and use a secure alternative such as SFTP when file transfer is required."
     }
     return None
     
@@ -78,5 +86,22 @@ def check_firmware_status(configuration):
     return {
         "check": "Firmware Status",
         "severity" : "MEDIUM",
-        "message": "Device firmware is outdated and may contain known vulnerabilities."
+        "message": "Device firmware is outdated and may contain known vulnerabilities.",
+        "recommendation": "Update the device firmware to the latest supported version."
     }
+    
+def calculate_overall_risk(findings):
+    severities = [finding["severity"] for finding in findings]
+    
+    if "CRITICAL" in severities:
+        return "Critical"
+    
+    if "HIGH" in severities:
+        return "HIGH"
+    
+    if "MEDIUM" in severities:
+        return "MEDIUM"
+    
+    else:
+        return "LOW"
+    
