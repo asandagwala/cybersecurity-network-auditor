@@ -51,3 +51,13 @@ def check_remote_admin_enabled(configuration):
         "severity" : "High",
         "message" : "Remote Admin is enabled"
     }
+    
+def check_network_encryption(configuration):
+    if configuration["encryption"] == "WPA3" or configuration["encryption"]== "WPA2":
+        return None
+    
+    return {
+        "check": "Network Encryption",
+        "severity": "HIGH",
+        "message": "Network Encryption is insecure"
+    }
